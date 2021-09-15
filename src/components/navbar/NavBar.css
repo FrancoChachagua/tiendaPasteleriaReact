@@ -1,0 +1,53 @@
+.menuNavBackground{
+    background: #0a2b30;
+}
+.menuNavLink{
+    text-decoration: none;
+    color: #fff;
+    padding: 35px 20px 30px 20px;
+}
+.menuNavLink:hover{
+    color: #ef8354;
+}
+.menuNavDropdown{
+    text-decoration: none;
+    padding:14px;
+    margin-top:13px;
+    background:#0a2b30;
+    color: #fff;
+}
+.menuNavDropdown:hover{
+    color: #ef8354;
+}
+.dropdown-menu.show{
+    background-color: #0a2b30;
+    color: #fff;
+}
+#basic-nav-dropdown{
+    color: #fff;
+}
+
+
+.menuNavLogo {
+    width: 90px;
+    height: 90px; 
+}
+
+.fontSaludo {
+    font-family: 'Parisienne', cursive;
+    font-size: 50px; 
+    color: #ef8354;
+}
+
+.cartNav{
+    color: white;
+    margin: 35px 30px 0px 50px;
+    font-size:25px
+}
+.cartNav:hover{
+    color: #ef8354;
+}
+
+.contadorDiv{
+    margin: 100px 0px 0px 100px;
+}
