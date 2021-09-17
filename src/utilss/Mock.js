@@ -90,10 +90,18 @@ const productos = [
             idProducto: 108
         }
 ];
+const productwo = productos.filter(( p => p.idProducto <= 100));
+
+console.log(productwo);
 
 export const callApi = new Promise ((resolve) =>{
         setTimeout(() => {
             resolve(productos)
-        }, 5000);
+        }, 3000);
 })
 
+export const callApiTwo = new Promise ((resolve) =>{
+    setTimeout(() => {
+        resolve(productwo)
+    }, 2000);
+})

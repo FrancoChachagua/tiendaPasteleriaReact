@@ -3,9 +3,8 @@ import './itemStyle.css'
 
 const Item = ({prod}) => {
     return (
-        <div>
-            
-            <div className= "d-inline-flex" id={prod.idProducto}>
+        <div className= "d-inline-flex">
+            <div className="m-3" id={prod.idProducto}>
                 <div className="">
                     <h3 className="">{prod.nombreProducto}</h3>
                     <img className=" imgCardProds" alt={prod.nombreProducto} src={prod.imagenProducto} />
