@@ -2,6 +2,7 @@ import Nav from 'react-bootstrap/Nav'
 import NavDropdown from 'react-bootstrap/NavDropdown'
 import './NavBar.css';
 import CartWidget from './CartWidget';
+import { Link } from 'react-router-dom';
 
 const NavBar=()=> {
     return (
@@ -11,14 +12,14 @@ const NavBar=()=> {
                 <Nav.Link  className="menuNavLink"  href="/home">Inicio</Nav.Link>
             </Nav.Item>
             <NavDropdown className="menuNavDropdown" title="Tienda" id="basic-nav-dropdown">
-                        <NavDropdown.Item className="menuNavDropdown" href="#action/3.1">Ver todo</NavDropdown.Item>
-                        
-                        <NavDropdown.Item className="menuNavDropdown" href="#action/3.2">Tartas y Tortas</NavDropdown.Item>
-                        <NavDropdown.Item className="menuNavDropdown" href="#action/3.3">Galletas y bizcochos</NavDropdown.Item>
-                        <NavDropdown.Item className="menuNavDropdown" href="#action/3.4">Postres saludables</NavDropdown.Item>
-                        <NavDropdown.Item className="menuNavDropdown" href="#action/3.5">Postres por ocasión</NavDropdown.Item>
+                        <NavDropdown.Item className="menuNavDropdown" exact href="/">Ver todo</NavDropdown.Item>
+                        <NavDropdown.Item className="menuNavDropdown" exact href="/category/tartasytortas">Tartas y Tortas</NavDropdown.Item>
+                        <NavDropdown.Item className="menuNavDropdown" exact href="/category/panes">Panes</NavDropdown.Item>
+                        <NavDropdown.Item className="menuNavDropdown" exact href="/category/galletasybizcochos">Galletas y Bizcochos</NavDropdown.Item>
+                        <NavDropdown.Item className="menuNavDropdown" exact href="/category/postressaludables">Postres Saludables</NavDropdown.Item>
+                        <NavDropdown.Item className="menuNavDropdown" exact href="/category/postresporocasion">Postres por Ocasión</NavDropdown.Item>
             </NavDropdown>
-            <a className="navbar-brand" href="./index.html"><img className="menuNavLogo" src="https://i.ibb.co/ChCgrX5/logo2.png" alt=""/></a>
+            <a className="navbar-brand" href="./index.html"><img className="menuNavLogo" src="https://i.ibb.co/ChCgrX5/logo2.png" alt="logo pasteleria"/></a>
             <Nav.Item>
                 <Nav.Link className="menuNavLink" eventKey="link-2">Nosotros</Nav.Link>
             </Nav.Item>
@@ -28,7 +29,9 @@ const NavBar=()=> {
             <Nav.Item>
                 <Nav.Link className="menuNavLink" eventKey="link-4">Contactanos</Nav.Link>
             </Nav.Item>
-            <CartWidget/>
+            <Link exact to='/detalle'>
+                <CartWidget/>
+            </Link>
         </Nav>
         </>
     ) 

@@ -4,15 +4,19 @@ import {callApiTwo} from '../../utilss/Mock'
 import ItemDetail from './ItemDetail'
 
 const ItemDetailContainer = () => {
-    const [productwo, setProductwo] = useState([])
+    const [productwo, setProductwo] = useState({})
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        callApiTwo.then(resp => setProductwo(resp))
+        callApiTwo
+        .then(resp => setProductwo(resp))
+        .catch(error => console.log(error))
+        .finally(()=> setLoading(false))
     }, [])
 
     return (
         <div>
-            <ItemDetail productwo = {productwo}/>
+            { loading ? <h2>Cargando...</h2>: <ItemDetail productwo = {productwo} /> }
         </div>
     )
 }
