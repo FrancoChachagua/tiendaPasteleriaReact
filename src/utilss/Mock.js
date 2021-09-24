@@ -178,5 +178,5 @@ export const callApi = new Promise ((resolve) =>{
 export const callApiTwo = new Promise ((resolve) =>{
     setTimeout(() => {
         resolve(productwo)
-    }, 2000);
+    }, 3000);
 })

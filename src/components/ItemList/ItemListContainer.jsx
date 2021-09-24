@@ -23,13 +23,13 @@ function ItemListContainer(props) {
             })
             .catch(error => console.log(error))
             .finally(()=> setLoading(false))
-    }, [])
+    }, [idCategory])
 
 
     
     return (
         <div>
-        <h1 className="fontSaludo"> {props.saludo}! Prop greeting</h1>
+        <h1 className="fontSaludo"> Todos los productos</h1>
         { loading ? <h2>Cargando...</h2>: <ItemList productos = {productos} /> }
         </div>
     )

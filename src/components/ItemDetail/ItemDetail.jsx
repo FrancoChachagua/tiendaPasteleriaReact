@@ -1,10 +1,11 @@
 import React from 'react'
-import ItemF from './ItemF'
+import Item from './Item'
 
-const ItemDetail = ({productwo}) => {
+const ItemDetail = ({item}) => {
+    console.log('itemDetail item:', item);
     return (
         <>
-            <ItemF productwo={productwo}/>
+            <Item item={item}/>
         </>
     )
 }

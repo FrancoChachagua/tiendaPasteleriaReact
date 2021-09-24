@@ -1,24 +1,33 @@
 import React from 'react'
 import {useState, useEffect} from 'react'
-import {callApiTwo} from '../../utilss/Mock'
+import { useParams } from 'react-router'
+import {callApi} from '../../utilss/Mock'
 import ItemDetail from './ItemDetail'
 
 const ItemDetailContainer = () => {
-    const [productwo, setProductwo] = useState({})
+    const [item, setItem] = useState();
     const [loading, setLoading] = useState(true);
+    const {idItem} = useParams ();
 
     useEffect(() => {
-        callApiTwo
-        .then(resp => setProductwo(resp))
+        callApi
+        .then((respuesta) =>{
+            if(idItem){
+                const mostrarUnoSolo = respuesta.filter((item => item.idProducto === idItem))
+                console.log('idItem:', idItem);
+                setItem(mostrarUnoSolo)
+            }else{
+                setItem(respuesta)
+            }
+        })
         .catch(error => console.log(error))
         .finally(()=> setLoading(false))
-    }, [])
+    }, [idItem])
 
     return (
         <div>
-            { loading ? <h2>Cargando...</h2>: <ItemDetail productwo = {productwo} /> }
+        {loading ? <h2>Cargando...</h2>: <ItemDetail item = {item[0]} />}
         </div>
     )
 }
-
 export default ItemDetailContainer

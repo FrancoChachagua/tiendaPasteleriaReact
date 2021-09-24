@@ -1,7 +1,15 @@
 import React from 'react'
+import { useState } from "react";
+import ItemCount from '../count/ItemCount';
 import './ItemStyles.css';
 
-const ItemDos = ({item}) => {
+const Item = ({item}) => {
+    const [quantity, setQuantity] = useState()
+    const onAdd = (amount) => {
+        console.log('Usted ha seleccionado:', amount);
+        setQuantity(amount)
+    }
+
     return (
         <div>
             <div className= "d-inline-flex" key={item.idProducto}>
@@ -14,8 +22,9 @@ const ItemDos = ({item}) => {
                     </div>
                 </div>
             </div>
-        </div>
+                <ItemCount stock={5} initial={1} onAdd={onAdd}/>
+            </div>
     )
 }
 
-export default ItemDos
+export default Item
