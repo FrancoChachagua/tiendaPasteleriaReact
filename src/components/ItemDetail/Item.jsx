@@ -1,14 +1,28 @@
 import React from 'react'
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { ContextApp } from '../../App'
+import { useCartContext } from '../../context/cartContext'
+
 import ItemCount from '../count/ItemCount';
 import './ItemStyles.css';
 
 const Item = ({item}) => {
     const [quantity, setQuantity] = useState()
-    const onAdd = (amount) => {
-        console.log('Usted ha seleccionado:', amount);
-        setQuantity(amount)
+    
+    const {addToCart} = useCartContext()
+
+    const {state} = useContext (ContextApp)
+
+    const onAdd = (quantity) =>{
+        addToCart({item: item, quantity: quantity})
+
     }
+
+
+
+    console.log('state', state);
+    
+
 
     return (
         <div>

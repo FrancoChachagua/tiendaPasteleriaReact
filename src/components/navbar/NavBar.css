@@ -51,3 +51,9 @@
 /* .contadorDiv{
     margin: 100px 0px 0px 100px;
 } */
+
+.imgCart{
+    width: 100px;
+    height: 100px;
+    border-radius: 3px;
+}
