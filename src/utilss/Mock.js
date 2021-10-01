@@ -5,7 +5,7 @@ const productos = [
             esProductolight:"No es un producto light",
             esProductoVegano: "No es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$900",
+            precioProducto:900,
             cantidadQueSeCompra: "1 unidad",
             idProducto: '100',
             category:'Panes'
@@ -17,7 +17,7 @@ const productos = [
             esProductolight:"No es un producto light",
             esProductoVegano: "No es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$1500",
+            precioProducto:1500,
             cantidadQueSeCompra: "1 unidad",
             idProducto: '101',
             category:'TartasyTortas'
@@ -28,7 +28,7 @@ const productos = [
             esProductolight:"No es un producto light",
             esProductoVegano: "No es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$1500",
+            precioProducto:1500,
             cantidadQueSeCompra: "1 unidad",
             idProducto: '102',
             category:'TartasyTortas'
@@ -39,7 +39,7 @@ const productos = [
             esProductolight:"No es un producto light",
             esProductoVegano: "No es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$1500",
+            precioProducto:1500,
             idProducto: '103',
             category:'TartasyTortas'
         },
@@ -49,7 +49,7 @@ const productos = [
             esProductolight:"No es un producto light",
             esProductoVegano: "No es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$1280",
+            precioProducto:1280,
             cantidadQueSeCompra: "1 unidades",
             idProducto: '104',
             category:'TartasyTortas'
@@ -60,7 +60,7 @@ const productos = [
             esProductolight:"No es un producto light",
             esProductoVegano: "No es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$350",
+            precioProducto:350,
             cantidadQueSeCompra: "12 unidades",
             idProducto: '105',
             category:'Panes'
@@ -71,7 +71,7 @@ const productos = [
             esProductolight:"Es un producto light",
             esProductoVegano: "Es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$2500",
+            precioProducto:2500,
             cantidadQueSeCompra: "1 unidad",
             idProducto: '106',
             category:'PostresSaludables'
@@ -82,7 +82,7 @@ const productos = [
             esProductolight:"No es un producto light",
             esProductoVegano: "No es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$2350",
+            precioProducto:2350,
             cantidadQueSeCompra: "1 unidad",
             idProducto: '107',
             category:'TartasyTortas'
@@ -93,7 +93,7 @@ const productos = [
             esProductolight:"No es un producto light",
             esProductoVegano: "No es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$800",
+            precioProducto:800,
             cantidadQueSeCompra: "6 unidades",
             idProducto: '108',
             category:'Panes'
@@ -104,7 +104,7 @@ const productos = [
             esProductolight:"No es un producto light",
             esProductoVegano: "No es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$300",
+            precioProducto:300,
             cantidadQueSeCompra: "12 unidades",
             idProducto: '109',
             category:'galletasYBizcochos'
@@ -115,7 +115,7 @@ const productos = [
             esProductolight:"No es un producto light",
             esProductoVegano: "No es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$900",
+            precioProducto:900,
             cantidadQueSeCompra: "1 unidad",
             idProducto: '110',
             category:'galletasYBizcochos'
@@ -126,7 +126,7 @@ const productos = [
             esProductolight:"No es un producto light",
             esProductoVegano: "No es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$1200",
+            precioProducto:1200,
             cantidadQueSeCompra: "1 unidad",
             idProducto: '111',
             category:'postresPorOcasion'
@@ -137,7 +137,7 @@ const productos = [
             esProductolight:"Es un producto light",
             esProductoVegano: "Es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$2200",
+            precioProducto:2200,
             cantidadQueSeCompra: "1 unidad",
             idProducto: '112',
             category:'postresPorOcasion'
@@ -148,7 +148,7 @@ const productos = [
             esProductolight:"Es un producto light",
             esProductoVegano: "Es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$700",
+            precioProducto:700,
             cantidadQueSeCompra: "1 unidad",
             idProducto: '113',
             category:'postresPorOcasion'
@@ -159,7 +159,7 @@ const productos = [
             esProductolight:"No es un producto light",
             esProductoVegano: "No es un producto vegano", 
             sinTACC:false,
-            precioProducto:"$2500",
+            precioProducto:2500,
             cantidadQueSeCompra: "1 unidad",
             idProducto: '114',
             category:'postresPorOcasion'

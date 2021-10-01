@@ -42,7 +42,7 @@ function App() {
         </Route>
 
         <Route exact path="/category/:idCategory" >
-          <ItemListContainer saludo="Hola"/>
+          <ItemListContainer/>
         </Route>  
           {/* <Route exact path="/detalle" component={ItemDetailContainer}/> esto ya no esta, recordar */}
 

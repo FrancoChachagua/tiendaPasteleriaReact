@@ -3,8 +3,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown'
 import './NavBar.css';
 import CartWidget from './CartWidget';
 import { Link, NavLink } from 'react-router-dom';
+import { useCartContext } from '../../context/cartContext'
 
 const NavBar=()=> {
+    const { cartList } = useCartContext();
+
     return (
         <>
         <Nav className="justify-content-center menuNavBackground" activeKey="/home">
@@ -30,7 +33,7 @@ const NavBar=()=> {
                 <Nav.Link className="menuNavLink" exact href="" eventKey="link-4">Contactanos</Nav.Link>
             </Nav.Item>
             <Link exact to='/Cart'>
-                <CartWidget/>
+                <CartWidget numberCart={cartList.length} />
             </Link>
         </Nav>
         </>
