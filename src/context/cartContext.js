@@ -8,12 +8,6 @@ export default function CartContextProvider ({children}) {
     
     const [cartList, setCartList] = useState([])
 
-    //function addToCart(data) {
-      //  setCartList([...cartList, data])
-        //Opcion 1 - find((p,index,self) => index === self.indexOf(p))
-       // Opcion 2 - Array.from(new Set (...cartList, ...data.item.idProducto))
-    //}
-
     const addToCart = (data) =>{
         console.log('data', data);
         let previousCart = [...cartList]
@@ -57,6 +51,9 @@ export default function CartContextProvider ({children}) {
         }
     }
 
+    const clear = () => {
+        setCartList([])
+    } 
 
     console.log('cartList', cartList);
 
@@ -65,7 +62,8 @@ export default function CartContextProvider ({children}) {
             cartList,
             addToCart,
             addTo,
-            onRemove
+            onRemove,
+            clear
             }}>
             {children}
         </cartContext.Provider>

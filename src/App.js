@@ -7,20 +7,20 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Cart from './components/navbar/Cart';
 import CartContextProvider from './context/cartContext'
 import { createContext } from 'react';
-import { useState } from "react";
+// import { useState } from "react";
 
 
-const categorias = []
+// const categorias = []
 
 export const ContextApp = createContext('a')
 
 function App() {
 
-  const [state, setState] = useState(categorias)
+  // const [state, setState] = useState(categorias)
   
-  function setearState(item) {
-    setState(item)
-  }
+  // function setearState(item) {
+  //   setState(item)
+  // }
 
 
   return (

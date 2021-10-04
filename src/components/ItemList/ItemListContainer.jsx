@@ -29,7 +29,6 @@ function ItemListContainer(props) {
     
     return (
         <div>
-        <h1 className="fontSaludo"> Todos los productos</h1>
         { loading ? <h2>Cargando...</h2>: <ItemList productos = {productos} /> }
         </div>
     )

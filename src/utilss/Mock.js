@@ -2,9 +2,9 @@ const productos = [
         {
             nombreProducto: "Rolls",
             imagenProducto:"https://i.ibb.co/x8LqVj8/receta-Rolls.jpg",
-            esProductolight:"No es un producto light",
-            esProductoVegano: "No es un producto vegano", 
-            sinTACC:false,
+            esProductolight:false,
+            esProductoVegano:false, 
+            sinTACC:true,
             precioProducto:900,
             cantidadQueSeCompra: "1 unidad",
             idProducto: '100',
@@ -14,9 +14,9 @@ const productos = [
     
             nombreProducto: "Chochotorta",
             imagenProducto:"https://i.ibb.co/2j8w8vn/producto-Chocotorta.jpg",
-            esProductolight:"No es un producto light",
-            esProductoVegano: "No es un producto vegano", 
-            sinTACC:false,
+            esProductolight:false,
+            esProductoVegano:true, 
+            sinTACC:true,
             precioProducto:1500,
             cantidadQueSeCompra: "1 unidad",
             idProducto: '101',
@@ -25,8 +25,8 @@ const productos = [
         {
             nombreProducto: "Daquoise",
             imagenProducto:"https://i.ibb.co/MnKcZV1/receta-Dacquoise.jpg",
-            esProductolight:"No es un producto light",
-            esProductoVegano: "No es un producto vegano", 
+            esProductolight:true,
+            esProductoVegano: true, 
             sinTACC:false,
             precioProducto:1500,
             cantidadQueSeCompra: "1 unidad",
@@ -36,8 +36,8 @@ const productos = [
         {
             nombreProducto: "Pastel Fram",
             imagenProducto:"https://i.ibb.co/w7q19Jc/receta-Pastel-Frambuesas.jpg",
-            esProductolight:"No es un producto light",
-            esProductoVegano: "No es un producto vegano", 
+            esProductolight:true,
+            esProductoVegano:true, 
             sinTACC:false,
             precioProducto:1500,
             idProducto: '103',
@@ -178,5 +178,5 @@ export const callApi = new Promise ((resolve) =>{
 export const callApiTwo = new Promise ((resolve) =>{
     setTimeout(() => {
         resolve(productwo)
-    }, 3000);
+    }, 3500);
 })

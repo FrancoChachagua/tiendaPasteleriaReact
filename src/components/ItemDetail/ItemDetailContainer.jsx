@@ -25,9 +25,9 @@ const ItemDetailContainer = () => {
     }, [idItem])
 
     return (
-        <div>
+        <>
         {loading ? <h2>Cargando...</h2>: <ItemDetail item = {item[0]} />}
-        </div>
+        </>
     )
 }
 export default ItemDetailContainer

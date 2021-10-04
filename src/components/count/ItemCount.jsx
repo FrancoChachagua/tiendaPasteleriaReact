@@ -21,20 +21,24 @@ const ItemCount = ({initial, onAdd, stock}) => {
         <div className="contadorDiv">
             <h1> {count} </h1>
             <button onClick={handleCountResta}>-</button>
-
-            {eventButton ?
-
-                <button onClick={addToCart}>Add to consola</button>
-                :
-                <Link exact to='/Cart'>
-                    <button>Terminar compra</button>
-                </Link>
-                
-            }
-
-
-
             <button onClick={handleCountSuma}>+</button>
+
+            <div className="row">
+                <div>
+                    {eventButton ?
+                        <button onClick={addToCart} className="">Añadir al carrito</button>
+                        :
+                        <div>
+                        <Link exact to='/Cart'>
+                            <button>Terminar compra</button>
+                        </Link>
+                        {/* <Link exact to='/'>
+                            <button>Seguir comprando</button>
+                        </Link> */}
+                        </div>
+                    }
+                </div>
+            </div>
         </div>
         
     )

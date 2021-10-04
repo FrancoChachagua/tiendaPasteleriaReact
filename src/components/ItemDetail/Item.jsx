@@ -8,21 +8,13 @@ import './ItemStyles.css';
 
 const Item = ({item}) => {
     const [quantity, setQuantity] = useState()
+
+    const {addToCart, cartList} = useCartContext()
     
-    const {addToCart} = useCartContext()
-
-    const {state} = useContext (ContextApp)
-
     const onAdd = (quantity) =>{
         addToCart({item: item, quantity: quantity})
-
+        console.log('item aqui',item);
     }
-
-
-
-    console.log('state', state);
-    
-
 
     return (
         <div>
@@ -31,8 +23,17 @@ const Item = ({item}) => {
                     <h3 className="">{item.nombreProducto}</h3>
                     <img className=" imgCardProds" alt={item.nombreProducto} src={item.imagenProducto} />
                     <div className="">
-                        <h4 className="">{item.precioProducto}</h4>
-                        <button className="btn cardItemDos-button"> <a href={`/item/${item.idProducto}`} className="cardItemDos-buttonHref"> <i className="fas fa-birthday-cake"></i> Detalles de {item.nombreProducto} </a></button>
+                        {/* <button className="marginCartItem" onClick={() => onBoolean(item)} > Log boolean </button>  */}
+                        <h4 className="">${item.precioProducto}</h4>
+                    </div>
+                    <div>
+                        <div> SinTACC:
+                        {(item.sinTACC === true)  ? (
+                            <p>Este producto es apto!</p>
+                        ) : (
+                            <p> Este producto NO es APTO</p>
+                        )}
+                        </div>
                     </div>
                 </div>
             </div>
