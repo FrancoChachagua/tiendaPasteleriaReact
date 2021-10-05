@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const Cart = () => {
     const {cartList, addTo, onRemove, clear} = useCartContext()
     
-    const priceItem = cartList.reduce((a, c) => a + c.item.precioProducto * c.quantity, 0);
+    const priceItem = cartList.reduce((a, c) => a + c.item.price * c.quantity, 0);
 
     const IVA = 0.21;
 
@@ -27,13 +27,12 @@ const Cart = () => {
                                                         
                                                         </>
                                                     )}
-
                     </div>    
                 </div>
                 <div>
-                    {cartList.map(item =>   <div key={item.idProducto}>
-                                                <img src={item.item.imagenProducto} className="imgCart" alt={item.item.nombreProducto} />
-                                                <h2>{item.item.nombreProducto}</h2>
+                    {cartList.map(item =>   <div key={item.id}>
+                                                <img src={item.item.imageId} className="imgCart" alt={item.item.title} />
+                                                <h2>{item.item.title}</h2>
                                                 <h2>{item.quantity} x ${item.item.precioProducto}</h2>
                                                 <div>
                                                     <h4> Precio: ${priceItem}</h4>
@@ -43,46 +42,18 @@ const Cart = () => {
                                                     <button onClick={()=> addTo(item)}>+</button>
                                                     <button onClick={()=> onRemove(item)}>-</button>
                                                 </div>
-                                                <hr /><br />
-                                                <div className="row">
-                                                    <h4>{item.item.sinTACC}</h4>
-                                                </div>
+                                                <hr />
                                             </div>
                                         )}
                 </div>
-                
             </div>
-            
+        
             <div className="col-6">
                 <Link exact to='/' >
                     <button className="marginCartItem row">Ir a la tienda</button>
                 </Link>
                 <Link exact to='category/tartasytortas'>
                     <button className="marginCartItem row ">Ir a la categoria de tartas y tortas</button>
-                </Link>
-                <Link exact to='/item/100'>
-                    <button className="marginCartItem row" >Ir al producto Rolls</button>
-                </Link>
-                <Link exact to='/item/101'>
-                    <button className="marginCartItem row" >Ir al producto Chocotorta</button>
-                </Link>
-                <Link exact to='/item/102' >
-                    <button className="marginCartItem row" >Ir al producto Daquoise</button>
-                </Link>
-                <Link exact to='/item/103' >
-                    <button className="marginCartItem row" >Ir al producto Pastel Fram</button>
-                </Link>
-                <Link exact to='/item/104' >
-                    <button className="marginCartItem row" >Ir al producto Torta FrRojos </button>
-                </Link>
-                <Link exact to='/item/105' >
-                    <button className="marginCartItem row" >Ir al producto Medialunas</button>
-                </Link>
-                <Link exact to='/item/106' >
-                    <button className="marginCartItem row" >Ir al producto Tarta de Z.</button>
-                </Link>
-                <Link exact to='/item/107' >
-                    <button className="marginCartItem row" >Ir al producto Brownie</button> 
                 </Link>
             </div>
             

@@ -18,17 +18,20 @@ const Item = ({item}) => {
 
     return (
         <div>
-            <div className= "d-inline-flex" key={item.idProducto}>
+            <div className= "d-inline-flex" key={item.id}>
                 <div className="m-4">
-                    <h3 className="">{item.nombreProducto}</h3>
-                    <img className=" imgCardProds" alt={item.nombreProducto} src={item.imagenProducto} />
+                    <h3 className="">{item.title}</h3>
+                    <img className=" imgCardProds" alt={item.title} src={item.imageId} />
                     <div className="">
                         {/* <button className="marginCartItem" onClick={() => onBoolean(item)} > Log boolean </button>  */}
-                        <h4 className="">${item.precioProducto}</h4>
+                        <h4 className="">${item.price}</h4>
                     </div>
                     <div>
+                        <div>
+                            <p>{item.description}</p>
+                        </div>
                         <div> SinTACC:
-                        {(item.sinTACC === true)  ? (
+                        {(item.productSinTACC === true)  ? (
                             <p>Este producto es apto!</p>
                         ) : (
                             <p> Este producto NO es APTO</p>

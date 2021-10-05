@@ -12,8 +12,8 @@ export default function CartContextProvider ({children}) {
         console.log('data', data);
         let previousCart = [...cartList]
 
-        if(previousCart.some(prod => prod.item.idProducto === data.item.idProducto)){
-            previousCart.find(prod => prod.item.idProducto === data.item.idProducto).quantity += data.quantity
+        if(previousCart.some(prod => prod.item.id === data.item.id)){
+            previousCart.find(prod => prod.item.id === data.item.id).quantity += data.quantity
             setCartList(previousCart)
         }else {
             setCartList ([...cartList, data])
@@ -23,12 +23,12 @@ export default function CartContextProvider ({children}) {
 
     const addTo = (data) => {
         console.log('cartList', cartList);
-        const exist = cartList.find((p) => p.item.idProducto === data.item.idProducto);
+        const exist = cartList.find((p) => p.item.id === data.item.id);
         console.log('exist', exist);
         if (exist) {
             setCartList(
                 cartList.map((p) =>
-                p.item.idProducto === data.item.idProducto ? { ...exist, quantity: exist.quantity + 1 } : p
+                p.item.id === data.item.id ? { ...exist, quantity: exist.quantity + 1 } : p
                 )
             );
             } else {
@@ -38,13 +38,13 @@ export default function CartContextProvider ({children}) {
 
 
     const onRemove = (data) => {
-        const exist = cartList.find((p) => p.item.idProducto === data.item.idProducto);
+        const exist = cartList.find((p) => p.item.id === data.item.id);
         if(exist.quantity === 1 ){
-            setCartList(cartList.filter((p) => p.item.idProducto != data.item.idProducto))
+            setCartList(cartList.filter((p) => p.item.id != data.item.id))
         }else{
             setCartList(
                 cartList.map((p) =>
-                p.item.idProducto === data.item.idProducto ? { ...exist, quantity: exist.quantity - 1} : p
+                p.item.id === data.item.id ? { ...exist, quantity: exist.quantity - 1} : p
                 )
             )
 

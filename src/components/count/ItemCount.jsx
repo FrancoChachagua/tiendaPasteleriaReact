@@ -9,9 +9,15 @@ const ItemCount = ({initial, onAdd, stock}) => {
     const [stck, setStock] = useState(6);
     const [eventButton, setEventButton] = useState(true)
 
-    function handleCountResta(){ if (count>0){setCount(count - 1)}}
-    function addToConsole(){onAdd(count)}
-    function handleCountSuma(){setCount(count + 1)}
+    function handleCountResta(){
+        if (count <= 0){
+        setCount(count - 1)
+        }
+    }
+// {({count} <= 0)  ? ({count} === 0) : (null)}
+    function handleCountSuma(){
+        setCount(count + 1)
+    }
     const addToCart = () => {
         onAdd(count)
         setEventButton(false)
@@ -19,6 +25,7 @@ const ItemCount = ({initial, onAdd, stock}) => {
 
     return(
         <div className="contadorDiv">
+            
             <h1> {count} </h1>
             <button onClick={handleCountResta}>-</button>
             <button onClick={handleCountSuma}>+</button>
