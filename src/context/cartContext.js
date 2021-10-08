@@ -60,6 +60,7 @@ export default function CartContextProvider ({children}) {
     return(
         <cartContext.Provider value = {{
             cartList,
+            setCartList,
             addToCart,
             addTo,
             onRemove,

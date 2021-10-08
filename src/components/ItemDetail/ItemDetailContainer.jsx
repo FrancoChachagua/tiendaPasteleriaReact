@@ -2,7 +2,6 @@ import React from 'react'
 import {useState, useEffect} from 'react'
 import { useParams } from 'react-router'
 import { getFirestore } from '../../service/getFirebase'
-import {callApi} from '../../utilss/Mock'
 import ItemDetail from './ItemDetail'
 
 const ItemDetailContainer = () => {

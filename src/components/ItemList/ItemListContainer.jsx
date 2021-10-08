@@ -13,10 +13,8 @@ function ItemListContainer(props) {
         if(idCategory){
             // inicializando el cliente
             const dbQuery = getFirestore()
-
             // Configurando a que coleccion accedo con .collection (setando)
             const itemCollection = dbQuery.collection('items')
-
             // Filtramos con el .where y hacemos el llamado con el .get
             itemCollection.where('categoryId' , '==', idCategory).get()
             .then(respuesta => {

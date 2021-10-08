@@ -2,6 +2,8 @@ import React from 'react'
 import './NavBar.css';
 import { useCartContext } from '../../context/cartContext'
 import { Link } from 'react-router-dom';
+import Form from './Form';
+
 
 const Cart = () => {
     const {cartList, addTo, onRemove, clear} = useCartContext()
@@ -14,6 +16,7 @@ const Cart = () => {
 
     const totalPrice = priceItem + priceItemIVA 
 
+    
 
     return (
         <>
@@ -52,10 +55,9 @@ const Cart = () => {
                 <Link exact to='/' >
                     <button className="marginCartItem row">Ir a la tienda</button>
                 </Link>
-                <Link exact to='category/tartasytortas'>
-                    <button className="marginCartItem row ">Ir a la categoria de tartas y tortas</button>
-                </Link>
             </div>
+
+            <Form/>
             
         </>
                     )
