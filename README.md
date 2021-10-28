@@ -28,7 +28,7 @@ $ npm install
 
 ## Expresiones de Gratitud 🎁
 
-- Le agradezco al profe de la camada y a mi tutor del curso de react de coderhouse por ayudarme en este curso! Gracias totales! 🤓
+- Le agradezco al profesor y al tutor de la camada del curso de react de coderhouse por ayudarme en este curso! Gracias totales! 🤓
 
 
 ## Learn More
