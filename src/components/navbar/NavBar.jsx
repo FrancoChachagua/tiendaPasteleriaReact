@@ -5,9 +5,13 @@ import './NavBar.css';
 import CartWidget from './CartWidget';
 import { Link } from 'react-router-dom';
 import { useCartContext } from '../../context/cartContext'
-
+import {UserWidget} from '../../authentication/UserWidget';
+import { useAuth } from '../../authentication/authenticationContext';
+import logoProyecto from  '../../imgs/logoProyecto.png';
 const NavBar=()=> {
     const { cartList } = useCartContext();
+
+    const { currentUser } = useAuth();
 
     return (
         <>
@@ -22,15 +26,32 @@ const NavBar=()=> {
                         <NavDropdown.Item className="menuNavDropdown">  <Link exact to="/category/postresporocasion"> Postres por Ocasión </Link> </NavDropdown.Item>
             </NavDropdown>
             <Link exact to="/">
-                <Navbar.Brand><img className="menuNavLogo" src="https://i.ibb.co/ChCgrX5/logo2.png" alt="logo pasteleria"/></Navbar.Brand>
+                <Navbar.Brand><img className="menuNavLogo" src={logoProyecto} alt="logo pasteleria"/></Navbar.Brand>
             </Link>
-            {/* <Nav.Link className="navbar-brand" exact href="/"><img className="menuNavLogo" src="https://i.ibb.co/ChCgrX5/logo2.png" alt="logo pasteleria"/></Nav.Link> */}
             <Link className="menuNavLink" exact to="/nosotros" eventKey="link-2">Nosotros</Link>
             <Link className="menuNavLink" exact to="/propuestas" eventKey="link-3">Propuestas</Link>
             <Link className="menuNavLink" exact to="/contactanos" eventKey="link-4">Contactanos</Link>
             <Link exact to='/Cart'>
                 <CartWidget numberCart={cartList.length} />
             </Link>
+            {currentUser 
+            ? 
+            <Link exact to='/User'>
+                <UserWidget/>
+            </Link> 
+            :
+            <>
+                <Link exact to='/LogIn'>
+                    <p className="loginTitle">Login /</p>
+                </Link>
+                <Link exact to='/SignUp'>
+                    <p className="signUpTitle">  Sign Up </p>
+                </Link>
+                
+            </>
+            }
+            
+            
         </Nav>
         </>
     ) 

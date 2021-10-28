@@ -3,6 +3,7 @@ import {useState, useEffect} from 'react'
 import { useParams } from 'react-router'
 import { getFirestore } from '../../service/getFirebase'
 import ItemDetail from './ItemDetail'
+import './ItemStyles.css';
 
 const ItemDetailContainer = () => {
     const [item, setItem] = useState();
@@ -11,11 +12,8 @@ const ItemDetailContainer = () => {
 
 
     useEffect(() => {
-        // Inicializando cliente
         const dbQuery = getFirestore()
-        // Config a que collecion acedemos con .collection
         const itemCollection = dbQuery.collection('items')
-        // Config que documento vamos a buscar con .doc
         const item = itemCollection.doc(idItem)
 
         item.get().then((doc) => {
@@ -23,7 +21,6 @@ const ItemDetailContainer = () => {
                 console.log('item no exite')
                 return;
             }
-            console.log('item encontrado')
             setItem ({id: doc.id, ...doc.data() })
         })
         .catch((error) => {
@@ -36,7 +33,7 @@ const ItemDetailContainer = () => {
 
     return (
         <>
-        {loading ? <h2>Cargando...</h2>: <ItemDetail item = {item} />}
+        {loading ? <h1><i class="fas fa-spinner margin-top"></i></h1> : <ItemDetail item = {item} />}
         </>
     )
 }

@@ -1,0 +1,32 @@
+
+/* UserWidget*/
+#userIconWidget{
+    width: 45px;
+    height: 45px;
+    border-radius: 25px;
+    margin-top: 19px;
+    font-size:45px;
+    color:yellow;
+    background-color: gray;
+}
+
+.backgroundError404{
+    background-image: url("https://blog.sinapsis.agency/wp-content/uploads/2021/04/DEFINICIONES.-ERROR-404.png");
+}
+
+#image404{
+    width: 100%;
+    height: 100%;
+}
+
+.loginTitle{
+    margin-top: 35px;
+    margin-right: 10px;
+    color: white;
+}
+
+.signUpTitle{
+    margin-top: 35px;
+    margin-left: 10px;
+    color: white;
+}

@@ -1,53 +1,61 @@
-import React from 'react'
 import {useState} from 'react'
 import { getFirestore } from '../../service/getFirebase';
 import  firebase  from 'firebase'
 import 'firebase/firestore'
 import { useCartContext } from '../../context/cartContext'
+import { useAuth } from '../../authentication/authenticationContext';
+import { Link } from 'react-router-dom';
 
-const Form = () => {
-    const {cartList,setCartList} = useCartContext()
+const Form = (props) => {
+    const [eventButton, setEventButton] = useState(true)
+    const [errorAccount, setErrorAccount] = useState(null)
+    const {totalPrice} = props
+    const {cartList} = useCartContext()
+    const [idTicket, setIdTicket] = useState('')
+    const { currentUser } = useAuth();
 
-    function purchaseFinished(respuesta) {
-        alert(`Su compra ha sido procesada con exito, este es su numero de ticket: ${respuesta}`)
-        setCartList([])
-    }
-
+    
     const [ formData, setFormData ] = useState({
         name: '',
         phone: '',
-        email:''
+        email: ''
     })
 
-    const formOnsubmit = (e) =>{    
+    const formOnsubmit = (e, user) =>{   
+        if ( user===0 || user === null){
+            e.preventDefault();
+            setErrorAccount('No tienes una cuenta, primero debes crear una!');      
+        }else{
+        e.preventDefault()
 
-        e.preventDefault()    
+        let orden = {}
 
-        let order = {}
-
-        order.date = firebase.firestore.Timestamp.fromDate( new Date() );
+        orden.date = firebase.firestore.Timestamp.fromDate( new Date() );
         
-        order.buyer = { name: 'Jorge' , phone:'54351359520' , email:'jorgePasteleria@gmail.com'   }
-        
-        order.items = cartList.map(itemCart => {
+        orden.buyer = formData
+    
+        orden.total = totalPrice
+
+        orden.items = cartList.map(itemCart => {
             const id = itemCart.item.id;
             const title = itemCart.item.title;
             const price = itemCart.item.price * itemCart.quantity;
+            const quantity = itemCart.quantity
             
-            return {id, title, price}   
+            return {id, title, price, quantity}   
         })
         
-
         const db = getFirestore()
-        db.collection('orders').add(order)
-        .then(respuesta => purchaseFinished(respuesta.id))
+        db.collection('orders').add(orden)
+        .then(respuesta => setIdTicket(respuesta.id))
         .catch(error=> console.log(error))
-        .finally(()=>
+        .finally(()=>{
             setFormData({
                 name: '',
                 phone: '',
-                email: ''
-            }) 
+                email: ''        
+            });
+        }
         )
         const itemsToUpdate = db.collection('items').where(
             firebase.firestore.FieldPath.documentId(), 'in', cartList.map(itm=> itm.item.id)
@@ -62,8 +70,23 @@ const Form = () => {
                     stock: docSnapshot.data().stock - cartList.find(itm => itm.item.id === docSnapshot.id).quantity
                 })
             })
+            batch.commit()
         })
+        }
     }
+
+    const cantBuy = (e , user) => {
+        if (user===0 || user === null) {
+            setEventButton(true);
+            setErrorAccount('No tienes una cuenta, crea una');
+            setTimeout(() => {
+                    setErrorAccount('');
+                }, 2500);
+            }else{
+                setEventButton(false);
+            }
+    }
+
     function formOnchange(e) {
         setFormData({
             ...formData,
@@ -71,31 +94,56 @@ const Form = () => {
         })
     }
 
+
     return (
         <>
             
             {cartList.length !==0 && ( <div>
-                                            <form  onSubmit={formOnsubmit} onChange={formOnchange}>
+                                            
+                                            <form  onSubmit={(e)=>formOnsubmit(e,currentUser)} onChange={formOnchange}>
+                                            {currentUser ? 
+                                                    
+                                                        formData.email = currentUser.email
+                                                    
+                                                    :
+                                                    <input 
+                                                        type='text' 
+                                                        placeholder='email' 
+                                                        name='email' 
+                                                        value={formData.email}    
+                                                    />  }
+                                                <br />
                                                 <input 
                                                     type='text' 
                                                     placeholder='Jorge' 
                                                     name='name'
                                                     value={formData.name} 
-                                                />  
+                                                    
+                                                />  <br />
                                                 <input 
                                                     type='number' 
                                                     placeholder='for example: 54351359520' 
                                                     name='phone' 
                                                     value={formData.phone}
-                                                />  
-                                                <input 
-                                                    type='text' 
-                                                    placeholder='ingrese el email' 
-                                                    name='email' 
-                                                    value={formData.email}    
-                                                /> 
-                                                <button>Finalizar compra</button>
+                                                />  <br />
+
+                                                {(eventButton===false) ?
+                                                <div>
+                                                    <Link exact to='/Ticket'>
+                                                        <button> Ver la factura </button>
+                                                    </Link>    
+                                                    
+                                                </div>
+                                                :
+                                                <>
+                                                </>
+                                                }
+                                                <p> {errorAccount && <p className="error"> {errorAccount} </p> } </p>
+                                                <button onClick={(e)=>cantBuy(e, currentUser)}>Finalizar compra</button>
                                             </form>
+                                            
+
+                                            
                                         </div>
             )}
                 

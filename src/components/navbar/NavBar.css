@@ -17,22 +17,11 @@
     background:#0a2b30;
     color: #fff;
 }
-/* .navbarLinkDropdown{
-    background: #0a2b30;
-    text-decoration: none;
-    color: #fff;
-    padding:14px;
-    margin-top:13px;
-} */
 
 .menuNavDropdown:hover{
     background-color: #ef8354;
     color: #fff;
 }
-/* .navbarLinkDropdown:hover{
-    background-color: #ef8354;
-    color: #fff;
-} */
 .dropdown-menu.show{
     background-color: #0a2b30;
     color: #fff;
@@ -62,10 +51,6 @@
     color: #ef8354;
 }
 
-/* .contadorDiv{
-    margin: 100px 0px 0px 100px;
-} */
-
 .imgCart{
     width: 100px;
     height: 100px;
@@ -76,5 +61,13 @@
     margin: 10px 25px 0px 25px;
 }
 .marl50p{
-    margin: 10px 0px 0px 1300px;
+    margin: 0px 30px 0px 1300px;
+}
+
+.error{
+    color: red;
+}
+.margin-top{
+    margin-top: 300px;
+    color: gray;
 }

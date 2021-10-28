@@ -5,57 +5,78 @@ import ItemListContainer from './components/ItemList/ItemListContainer';
 import ItemDetailContainer from './components/ItemDetail/ItemDetailContainer';
 import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Cart from './components/navbar/Cart';
-import CartContextProvider from './context/cartContext'
 import { createContext } from 'react';
-// import { useState } from "react";
-
-
-// const categorias = []
+import CartContextProvider from './context/cartContext'
+import { AuthenticationProvider } from './authentication/authenticationContext';
+import { SingUp } from './authentication/SingUp';
+import { LogIn } from './authentication/LogIn';
+import { Error } from './authentication/Error';
+import User from './authentication/User';
+import { Ticket } from './components/purchaseTicket/Ticket';
+import { PdfConverter } from './components/purchaseTicket/PdfConverter';
 
 export const ContextApp = createContext('a')
 
+
 function App() {
-
-  // const [state, setState] = useState(categorias)
   
-  // function setearState(item) {
-  //   setState(item)
-  // }
-
-
   return (
-    <CartContextProvider>
-      <BrowserRouter>
-      <div className="App">
+    <AuthenticationProvider>
+      <CartContextProvider>
+        <BrowserRouter>
+          <div className="App">
+          <NavBar/>
+          
+          <Switch>
 
-        <NavBar/>
+          <Route exact path="/Error" >
+            <Error/>
+          </Route>
+
+          <Route exact path="/Cart" >
+            <Cart/>
+          </Route>
+
+          <Route exact path="/" >
+            <ItemListContainer/>
+          </Route>
+
+          <Route exact path="/User">
+            <User/>
+          </Route>
+
+          <Route exact path="/Ticket">
+            <Ticket/>
+          </Route>
+
+          <Route exact path="/PdfConverter">
+            <PdfConverter/>
+          </Route>
+
+          <Route exact path="/LogIn">
+            <LogIn/>
+          </Route>
+
+          <Route exact path="/SignUp">
+            <SingUp/>
+          </Route>
+
+
+          <Route exact path="/category/:idCategory" >
+            <ItemListContainer/>
+          </Route>  
+
+          <Route exact path="/item/:idItem" >
+            <ItemDetailContainer/>
+          </Route>
+      
+          </Switch>
+        </div>
         
-
-        <Switch>
-
-        <Route exact path="/Cart" >
-          <Cart/>
-        </Route>
-
-        <Route exact path="/" >
-          <ItemListContainer/>
-        </Route>
-
-        <Route exact path="/category/:idCategory" >
-          <ItemListContainer/>
-        </Route>  
-          {/* <Route exact path="/detalle" component={ItemDetailContainer}/> esto ya no esta, recordar */}
-
-
-        <Route exact path="/item/:idItem" >
-          <ItemDetailContainer/>
-        </Route>
-      
-        </Switch>
-      </div>
-      
-      </BrowserRouter> 
-    </CartContextProvider>
+        </BrowserRouter> 
+        
+      </CartContextProvider>
+    </AuthenticationProvider>
   )
 }
 

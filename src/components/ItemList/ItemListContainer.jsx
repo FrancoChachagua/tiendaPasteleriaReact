@@ -3,6 +3,7 @@ import {useParams} from 'react-router';
 import React from 'react';
 import ItemList from '../ItemList/ItemList';
 import { getFirestore } from '../../service/getFirebase';
+import './itemStyle.css';
 
 function ItemListContainer(props) {
     const [productos, setProductos] = useState([]);
@@ -11,14 +12,10 @@ function ItemListContainer(props) {
 
     useEffect(() => {
         if(idCategory){
-            // inicializando el cliente
             const dbQuery = getFirestore()
-            // Configurando a que coleccion accedo con .collection (setando)
             const itemCollection = dbQuery.collection('items')
-            // Filtramos con el .where y hacemos el llamado con el .get
             itemCollection.where('categoryId' , '==', idCategory).get()
             .then(respuesta => {
-                // Accedemos al set de datos con .docs, "combinamos" la respuesta con el id y guardamos en setProductos el resultado
                 setProductos( respuesta.docs.map(prod => ({id: prod.id, ...prod.data() } ) )  )
             })
             .catch(error => console.log(error))
@@ -36,7 +33,7 @@ function ItemListContainer(props) {
 
     return (
         <div>
-        { loading ? <h2>Cargando...</h2>: <ItemList productos = {productos} /> }
+        { loading ? <h1><i class="fas fa-spinner margin-top"></i></h1> : <ItemList productos = {productos} /> }
         </div>
     )
 }
