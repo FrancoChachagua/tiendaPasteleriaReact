@@ -1,20 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react';
 import './NavBar.css';
-import { useCartContext } from '../../context/cartContext'
+import { useCartContext } from '../../context/cartContext';
 import { Link } from 'react-router-dom';
-import Form from './Form';
+import { useAuth } from '../../authentication/authenticationContext';
 
 const Cart = () => {
     
     const {cartList, addTo, onRemove, clear} = useCartContext()
     
-    const priceItem = cartList.reduce((a, c) => a + c.item.price * c.quantity, 0);
-
     const IVA = 0.21;
+    
+    const totalPrice = cartList.reduce((a, c) => a + ((c.item.price + c.item.price * IVA) * c.quantity ), 0);
 
-    const priceItemIVA = priceItem * IVA;
+    const [eventButton, setEventButton] = useState(true);
+    const [errorAccount, setErrorAccount] = useState(null);
+    const { currentUser } = useAuth();
 
-    const totalPrice = priceItem + priceItemIVA 
+
+
+    const cantBuy = (user) => {
+        if (user===0 || user === null) {
+            setEventButton(true);
+            setErrorAccount('No tienes una cuenta, crea una');
+            setTimeout(() => {
+                    setErrorAccount('');
+                }, 2500);
+            }else{
+                setEventButton(false);
+            }
+    }
+
     return (
         <>
             <div className="row">
@@ -32,13 +47,13 @@ const Cart = () => {
                         <div>
                             <label for="file">El progreso de tu compra es de: 50%</label> <br />
                             <progress id="file" max="100" value="50">  </progress>
-                            <p> Rellena el último formulario y termina tu compra! </p>
+                            <p> Cuando quieras realizar una compra solo debes hacer click en el boton comprar! </p>
                         </div>
                         }
                     </div>
                     <div className="marl50p">
                         {cartList.length !==0 && (  <> 
-                                                <h4>Total: ${totalPrice.toFixed(2)}</h4>
+                                                <h4>Total: ${totalPrice.toFixed(0)}</h4>
                                                 <button className="marginCartItem" onClick={()=> clear(cartList.item)} > Vaciar carrito </button>
                                                     </>
                                                 )}
@@ -49,10 +64,7 @@ const Cart = () => {
                                                 <img src={item.item.imageId} className="imgCart" alt={item.item.title} />
                                                 <h2>{item.item.title}</h2>
                                                 <h2>{item.quantity} x ${item.item.price}</h2>
-                                                <div>
-                                                    <h4> Precio: ${priceItem}</h4>
-                                                    <h4> IVA del producto: ${priceItemIVA}</h4>
-                                                </div>
+                                                <h3> Precio $ {item.quantity * item.item.price} IVA: ${item.quantity * item.item.price* IVA}</h3> 
                                                 <div>
                                                     <button onClick={()=> addTo(item)}>+</button>
                                                     <button onClick={()=> onRemove(item)}>-</button>
@@ -62,10 +74,33 @@ const Cart = () => {
                                         )}
                 </div>
             </div>
+            <div>
+                <br /><p> {errorAccount && <p className="error"> {errorAccount} </p> } </p><br />
+            </div>
             
-            <Form totalPrice={totalPrice}/>
+            {(cartList.length >= 1) ?
+                                    <div>
+                                        {eventButton===false ?
+                                                            <>
+                                                                <Link exact to="/Form">
+                                                                    <button> Rellena el formulario para terminar la compra!</button>
+                                                                </Link>
+                                                            </>
+                                                            :
+                                                            <>
+                                                                <button onClick={(e)=>cantBuy(e, currentUser)}> Comprar! </button>
+                                                            </>
+                                        }
+                                    </div>
+                                    :
+                                    <></>
+                                
+            }
+            <div className="d-none"> 
+                
+            </div>
         </>
-                    )
+            )
 
 }
 

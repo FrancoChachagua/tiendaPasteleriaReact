@@ -28,7 +28,7 @@ export const LogIn = () => {
             await login(email, password);
             history.push('/');
         } catch (error) {
-            setError('x Sorry, your password is incorrect.');
+            setError('x Lo siento, tu contraseña es incorrecta!');
         }
     }
 

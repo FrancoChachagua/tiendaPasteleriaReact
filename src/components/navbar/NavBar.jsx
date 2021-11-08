@@ -9,7 +9,7 @@ import {UserWidget} from '../../authentication/UserWidget';
 import { useAuth } from '../../authentication/authenticationContext';
 import logoProyecto from  '../../imgs/logoProyecto.png';
 const NavBar=()=> {
-    const { cartList } = useCartContext();
+    const { quantityCart } = useCartContext();
 
     const { currentUser } = useAuth();
 
@@ -32,7 +32,7 @@ const NavBar=()=> {
             <Link className="menuNavLink" exact to="/propuestas" eventKey="link-3">Propuestas</Link>
             <Link className="menuNavLink" exact to="/contactanos" eventKey="link-4">Contactanos</Link>
             <Link exact to='/Cart'>
-                <CartWidget numberCart={cartList.length} />
+                <CartWidget numberCart={quantityCart()}/>
             </Link>
             {currentUser 
             ? 

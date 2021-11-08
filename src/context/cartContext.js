@@ -48,6 +48,16 @@ export default function CartContextProvider ({children}) {
         }
     }
 
+    const totalPrice = () =>{
+        const total = cartList.reduce((acum, item) => (acum + ((item.item.price + item.item.price * 0.21) * item.quantity )), 0);
+        return total;
+    }
+    
+    const quantityCart = () =>{
+        const quantity = cartList.reduce((acum, item)=>acum + item.quantity, 0)
+        return quantity;
+    }
+
     const clear = () => {
         setCartList([])
     } 
@@ -59,7 +69,9 @@ export default function CartContextProvider ({children}) {
             addToCart,
             addTo,
             onRemove,
-            clear
+            clear,
+            totalPrice,
+            quantityCart
             }}>
             {children}
         </cartContext.Provider>

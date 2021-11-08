@@ -14,6 +14,7 @@ import { Error } from './authentication/Error';
 import User from './authentication/User';
 import { Ticket } from './components/purchaseTicket/Ticket';
 import { PdfConverter } from './components/purchaseTicket/PdfConverter';
+import Form from './components/navbar/Form';
 
 export const ContextApp = createContext('a')
 
@@ -35,6 +36,10 @@ function App() {
 
           <Route exact path="/Cart" >
             <Cart/>
+          </Route>    
+
+          <Route exact path="/Form" >
+            <Form/>
           </Route>
 
           <Route exact path="/" >
@@ -60,7 +65,6 @@ function App() {
           <Route exact path="/SignUp">
             <SingUp/>
           </Route>
-
 
           <Route exact path="/category/:idCategory" >
             <ItemListContainer/>

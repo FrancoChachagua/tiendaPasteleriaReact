@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useAuth } from './authenticationContext'
+import { useHistory } from 'react-router'
 
 export const User = () => {
 
@@ -7,14 +8,16 @@ export const User = () => {
 
     const { currentUser, logout } = useAuth();
 
+    const history = useHistory();
+    
     const handleLogout = async () =>{
-        try {
-            await logout();
-        } catch (error) {
-            console.log(error.message);
-            setError('Server error');
+            try {
+                await logout();
+                history.push('/Login');
+            } catch (error) {
+                setError(`${error}`);
+            }
         }
-    } 
 
     return (
         <>

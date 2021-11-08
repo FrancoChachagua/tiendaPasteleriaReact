@@ -21,40 +21,73 @@ export const SingUp = () => {
     }
 
     const handlePassword = (e) => {
-        setPassword(e.target.value)
+        if (e.target.value < 6 ) {
+            setError('La contraseña debe tener mas de 6 digitos')
+            setTimeout(() => {
+                setError('');
+            }, 5500);
+        }else{
+            setPassword(e.target.value)
+        }
     }
 
     const handleConfirmPassword = (e) => {
         setConfirmPassword(e.target.value)
     }
     
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     if (password !== confirmPassword ) {
+    //         setError(`Las contraseñas no coinciden`);
+    //         setTimeout(() => {
+    //             setError('');
+    //         }, 3500);
+    //     }else{
+    //         try {
+    //             await singup(email,password)
+    //             history.push('/');
+    //         } catch (error) {
+    //             setError('Server error');
+    //             setTimeout(() => {
+    //                 setError('');
+    //             }, 1500);
+    //         }
+    //     }
+    // }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (password !== confirmPassword ) {
-            setError(`Passwords don't match`);
+            setError(`Las contraseñas no coinciden`);
             setTimeout(() => {
                 setError('');
-            }, 5500);
-
+            }, 2500);
+            return;
+        }if (password < 6) {
+            setError(`La contraseña debe tener mas de 6 digitos`);
+            setTimeout(() => {
+                setError('');
+            }, 2500);
+            return;
         }else{
             try {
                 await singup(email,password)
                 history.push('/');
             } catch (error) {
-                setError('Server error');
+                setError(`${error}`);
                 setTimeout(() => {
                     setError('');
-                }, 1500);
+                }, 4500);
             }
         }
     }
+
 
     return (
         <>
             <div className="card">
                 <div className="card-header">
                     <h1> Sing Up </h1>
-                    {error && <p className="error"> {error} </p> }
                 </div>
                 <div className="card-body">
                     <form onSubmit={handleSubmit}>
@@ -66,6 +99,7 @@ export const SingUp = () => {
                         <input type="password" name="confirmPassword" id="confirmPassword"   onChange={handleConfirmPassword}/>
                         <input type="submit" value="Sing Up"/>
                     </form>
+                    {error && <p className="error"> {error} </p> }
                     <Link exact to='./LogIn'>
                         <p> ¿Ya tienes una cuenta? <b> Login </b> </p>
                     </Link>

@@ -11,9 +11,9 @@ export const AuthenticationProvider = (props) => {
     const [currentUser, setCurrentUser] = useState({});
     
     useEffect(()=> {
-        auth.onAuthStateChanged((user) => 
-            setCurrentUser(user)
-        )}, []);
+    auth.onAuthStateChanged((user) => 
+        setCurrentUser(user)
+    )}, []);
 
     const singup = (email, password) => {   
         return auth.createUserWithEmailAndPassword(email, password);
